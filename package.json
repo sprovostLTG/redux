@@ -24,14 +24,15 @@
     "build:umd": "cross-env BABEL_ENV=es NODE_ENV=development rollup -c -i src/index.js -o dist/redux.js",
     "build:umd:min": "cross-env BABEL_ENV=es NODE_ENV=production rollup -c -i src/index.js -o dist/redux.min.js",
     "build": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
-    "prepare": "npm run clean && npm run lint && npm test && npm run build",
+    "prepare": "npm run snyk-protect && npm run clean && npm run lint && npm test && npm run build",
     "examples:lint": "eslint examples",
     "examples:test": "cross-env CI=true babel-node examples/testAll.js",
     "docs:clean": "rimraf _book",
     "docs:prepare": "gitbook install",
     "docs:build": "npm run docs:prepare && gitbook build -g reactjs/redux && cp logo/apple-touch-icon.png _book/gitbook/images/apple-touch-icon-precomposed-152.png && cp logo/favicon.ico _book/gitbook/images",
     "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:reactjs/redux gh-pages --force"
+    "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:reactjs/redux gh-pages --force",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -63,7 +64,8 @@
     "lodash": "^4.2.1",
     "lodash-es": "^4.2.1",
     "loose-envify": "^1.1.0",
-    "symbol-observable": "^1.0.3"
+    "symbol-observable": "^1.0.3",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-cli": "^6.3.15",
@@ -128,5 +130,6 @@
   },
   "jest": {
     "testRegex": "(/test/.*\\.spec.js)$"
-  }
+  },
+  "snyk": true
 }
