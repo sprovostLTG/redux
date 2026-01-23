@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "humps": "^2.0.0",
-    "jest-cli": "^20.0.4",
-    "lodash": "^4.16.1",
+    "jest-cli": "^24.0.0",
+    "lodash": "^4.17.23",
     "normalizr": "^3.2.3",
     "prop-types": "^15.5.10",
     "react": "^15.5.0",
